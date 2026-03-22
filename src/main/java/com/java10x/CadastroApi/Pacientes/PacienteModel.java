@@ -22,8 +22,10 @@ public class PacienteModel {
     private Long id;
 
     private String nome;
+    @Column(unique = true)
     private String telefone;
     private LocalDate dataAniversario;
+    @Column(unique = true)
     private String cpf;
 
     // Um paciente pode ter várias agendas
