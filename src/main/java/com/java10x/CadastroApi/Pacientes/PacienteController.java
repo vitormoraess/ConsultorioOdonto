@@ -1,4 +1,4 @@
-package com.java10x.CadastroApi;
+package com.java10x.CadastroApi.Pacientes;
 
 import org.springframework.web.bind.annotation.*;
 
