@@ -1,9 +1,19 @@
 package com.java10x.CadastroApi.Dentista;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.java10x.CadastroApi.Agenda.AgendaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_dentista")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class DentistaModel {
 
     @Id
@@ -13,37 +23,10 @@ public class DentistaModel {
     private String nome;
     private String especialidade;
 
-
-    public DentistaModel() {
-    }
-
-    public DentistaModel(String nome, String especialidade) {
-        this.nome = nome;
-        this.especialidade = especialidade;
-    }
+    // Um dentista atende várias agendas
+    @OneToMany(mappedBy = "dentista")
+    @JsonIgnore
+    private List<AgendaModel> agendas;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
 }
